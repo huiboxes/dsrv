@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>life.aftert</groupId>
+    <artifactId>dsrv</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>databox-mybatis</module>
+        <module>databox-common</module>
+        <module>databox-core</module>
+        <module>databox-web</module>
+        <module>databox-server</module>
+    </modules>
+
+    <properties>
+        <project.version>1.0-SNAPSHOT</project.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <packageName>${artifactId}-${version}</packageName>
+        <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
+        <db.jdbcuser>root</db.jdbcuser>
+        <db.jdbcpassword>huibox</db.jdbcpassword>
+        <db.jdbcurl>
+            <![CDATA[jdbc:mysql://localhost:3655/DSERV_SERVICE?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf8]]></db.jdbcurl>
+        <main.basedir>${project.basedir}</main.basedir>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+    </dependencies>
+
+
+
+</project>
