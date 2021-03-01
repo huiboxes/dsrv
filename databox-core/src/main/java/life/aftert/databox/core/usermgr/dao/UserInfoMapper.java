@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.ResultMap;
 
+import java.util.List;
+
 @Mapper
 public interface UserInfoMapper {
     void addUser(@Param("userInfo") UserInfo userInfo);
@@ -23,4 +25,7 @@ public interface UserInfoMapper {
 
     @ResultMap("UserInfoResultMap")
     UserInfo getUserInfoByName(@Param("userName") String userName);
+
+    @ResultMap("UserInfoResultMap")
+    List getUserlist();
 }

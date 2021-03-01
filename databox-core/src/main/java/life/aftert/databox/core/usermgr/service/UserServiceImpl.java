@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Transactional
 @Service("userServiceImpl")
@@ -71,4 +72,8 @@ public class UserServiceImpl implements IUserService {
         return userInfoMapper.getUserInfoByName(userName);
     }
 
+    @Override
+    public List getUserlist() {
+        return userInfoMapper.getUserlist();
+    }
 }

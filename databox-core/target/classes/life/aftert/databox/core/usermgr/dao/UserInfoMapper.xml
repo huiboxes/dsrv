@@ -50,4 +50,8 @@
         select * from USER_INFO where
         USER_NAME=#{userName}
     </select>
+
+    <select id="getUserlist" resultMap="UserInfoResultMap">
+        select * from USER_INFO
+    </select>
 </mapper>

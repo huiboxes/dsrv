@@ -8,6 +8,7 @@ import life.aftert.databox.core.usermgr.model.SystemRole;
 import life.aftert.databox.core.usermgr.model.UserInfo;
 import life.aftert.databox.core.usermgr.service.IUserService;
 import life.aftert.databox.web.security.ContextUtil;
+import org.apache.hadoop.hbase.security.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +28,7 @@ public class ManageController extends BaseController {
     IUserService userService;
 
     @RequestMapping(value = "user", method = RequestMethod.POST)
-    public Object createUser(@RequestParam("userName") String userName,
+    public Object createUser(@RequestParam("username") String userName,
                              @RequestParam("password") String password,
                              @RequestParam(name = "detail", required = false, defaultValue = "") String detail,
                              @RequestParam(name = "role", required = false, defaultValue = "USER") String role) {
@@ -68,6 +69,12 @@ public class ManageController extends BaseController {
     public Object getUserInfo() {
         UserInfo currentUser = ContextUtil.getCurrentUser();
         return getResult(currentUser);
+    }
+
+    @RequestMapping(value="userlist",method = RequestMethod.GET)
+    public Object getUserlist(){
+        List<UserInfo> userlist = userService.getUserlist();
+        return getResult(userlist);
     }
 
     @RequestMapping(value = "token", method = RequestMethod.POST)

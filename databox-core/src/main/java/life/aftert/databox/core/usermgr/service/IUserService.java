@@ -1,6 +1,9 @@
 package life.aftert.databox.core.usermgr.service;
 
 import life.aftert.databox.core.usermgr.model.UserInfo;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 public interface IUserService {
 
@@ -15,5 +18,7 @@ public interface IUserService {
     UserInfo checkPassword(String userName, String password);
 
     UserInfo getUserInfoByName(String userName);
+
+    List getUserlist();
 
 }
