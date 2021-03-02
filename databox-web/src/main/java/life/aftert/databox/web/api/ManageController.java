@@ -42,7 +42,7 @@ public class ManageController extends BaseController {
         return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "NOT ADMIN");
     }
 
-    @RequestMapping(value = "user", method = RequestMethod.DELETE)
+    @RequestMapping(value = "userdelete",method = RequestMethod.POST)
     public Object deleteUser(@RequestParam("userId") String userId) {
         UserInfo currentUser = ContextUtil.getCurrentUser();
         if (operationAccessControl.checkSystemRole(currentUser.getSystemRole(), userId)) {
@@ -51,6 +51,16 @@ public class ManageController extends BaseController {
         }
         return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "PERMISSION DENIED");
     }
+
+//    @RequestMapping(value = "user", method = RequestMethod.DELETE)
+//    public Object deleteUser(@RequestParam("userId") String userId) {
+//        UserInfo currentUser = ContextUtil.getCurrentUser();
+//        if (operationAccessControl.checkSystemRole(currentUser.getSystemRole(), userId)) {
+//            userService.deleteUser(userId);
+//            return getResult("success");
+//        }
+//        return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "PERMISSION DENIED");
+//    }
 
     @RequestMapping(value = "user", method = RequestMethod.PUT)
     public Object updateUserInfo(
