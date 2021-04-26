@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.session.web.http.CookieSerializer;
+import org.springframework.session.web.http.DefaultCookieSerializer;
 import org.springframework.web.servlet.config.annotation.*;
 
 
@@ -35,15 +37,15 @@ public class DxServerApp {
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer(){
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedHeaders("*")
-                        .allowedOrigins("*")
-                        .allowedMethods("GET", "POST", "DELETE", "PUT","OPTIONS","PATCH")
-                        .allowCredentials(true)
-                        .maxAge(3600);
-            }
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/**")
+//                        .allowedHeaders("*")
+//                        .allowedOrigins("*")
+//                        .allowedMethods("GET", "POST", "DELETE", "PUT","OPTIONS","PATCH")
+//                        .allowCredentials(true)
+//                        .maxAge(3600);
+//            }
 
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
@@ -52,5 +54,12 @@ public class DxServerApp {
         };
     }
 
+    @Bean
+    public CookieSerializer httpSessionIdResolver() {
+        DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
+        cookieSerializer.setUseHttpOnlyCookie(false);
+        cookieSerializer.setSameSite(null);
+        return cookieSerializer;
+    }
 
 }

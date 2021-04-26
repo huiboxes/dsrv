@@ -47,11 +47,4 @@ public class DxServerBeanConfiguration {
         return store;
     }
 
-    @Bean
-    public CookieSerializer httpSessionIdResolver(){
-        DefaultCookieSerializer cookieSerializer = new DefaultCookieSerializer();
-        cookieSerializer.setSameSite(null);
-        return cookieSerializer;
-    }
-
 }
