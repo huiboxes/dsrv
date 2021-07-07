@@ -1,0 +1,19 @@
+html,body{
+    background-color: #F3F3F4;
+}
+
+.layui-nav-item{
+  background-color: #001529;
+}
+.layui-nav-tree .layui-nav-item>a {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.avatar,.username{
+  text-align: center;
+  width: 200px;
+  padding: 5px 0;
+}
+.avatar{
+  user-select: none;
+}

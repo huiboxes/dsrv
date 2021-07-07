@@ -5,7 +5,6 @@ import life.aftert.databox.core.ErrorCodes;
 import life.aftert.databox.core.usermgr.model.UserInfo;
 import life.aftert.databox.web.security.ContextUtil;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +25,7 @@ public class LoginController extends BaseController {
     @ResponseBody
     public Object loginPost(String username, String password, HttpSession session)
             throws IOException {
+
         if (Strings.isNullOrEmpty(username) || Strings.isNullOrEmpty(password)) {
             return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "username or password can not be null");
         }
@@ -36,6 +36,7 @@ public class LoginController extends BaseController {
         } else {
             return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "login error");
         }
+
     }
 
     @GetMapping("/logout")

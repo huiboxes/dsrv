@@ -1,0 +1,10 @@
+html,body{
+    background-color: #F3F3F4;
+}
+
+.login-form{
+    max-width: 50rem;
+    margin: auto;
+    margin-top: 12rem;
+    margin-left: 18rem;
+}

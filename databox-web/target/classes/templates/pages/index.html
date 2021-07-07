@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>数据尚云</title>
+<link th:href="@{/libs/layui/css/layui.css}" rel="stylesheet" href="../../static/layui/css/layui.css"/>
+<link th:href="@{/css/reset.css}" rel="stylesheet" href="../../static/css/reset.css"/>
+<link th:href="@{/css/index.css}" rel="stylesheet" href="../../static/css/index.css"/>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div>
+    <div class="layui-header" style="display: flex;height: 45px;">
+      <div style="flex-basis: 200px;"></div><!-- 占位DIV -->
+      <div style="line-height: 45px;background-color:#fff;flex-grow:1;">&emsp;数据尚云</div>
+    </div>
+  </div>
+
+  <div class="layui-side layui-bg-black" style="top: 0;z-index: 99999999;background-color: #001529 !important;padding-top: 1rem;">
+    <div class="layui-side-scroll">
+      <div class="avatar"><img style="height:70px;width:70px;border-radius:50%;" th:src="@{/image/avatar.jpg}"></div>
+      <div class="username">用户名</div>
+      <ul class="layui-nav layui-nav-tree">
+        <li class="layui-nav-item"><a href="javascript:;"> <i class="layui-icon layui-icon-app"></i>全部文件</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">我的分享</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">回收站</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">退出登录</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="layui-body" style="background: #F3F3F4;top: 45px;">
+    <!-- 内容主体区域 -->
+    <iframe src="login" scrolling="no" frameborder="0" width="100%" height="100%" id="booth" style="padding: 15px;"></iframe>
+  </div>
+
+  <div class="layui-footer" style="text-align: center;background-color: #fff;">
+    <!-- 底部固定区域 -->
+    © huibox.xyz - Powered by huiboxes@gmail.com
+  </div>
+</div>
+<script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
+<script th:src="@{/js/index.js}" src="../../static/js/index.js"></script>
+</body>
+</html>
