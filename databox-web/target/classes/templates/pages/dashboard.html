@@ -1,17 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="pages/index" th:fragment="content">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数据尚云-后台</title>
-  <link rel="stylesheet" href="./styles/reset.css">
-  <link rel="stylesheet" href="./libs/layui-v2.6.8/layui/css/layui.css">
+  <title>数据尚云</title>
+  <link th:href="@{/libs/layui/css/layui.css}" rel="stylesheet" href="../../static/layui/css/layui.css"/>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" href="../../static/css/reset.css"/>
+  <link th:href="@{/css/dashboard.css}" rel="stylesheet" href="../../static/css/dashboard.css"/>
 </head>
 <body>
-  
+  <div class="topnav">
+    <span class="layui-breadcrumb" id="fileNavBreadcurmb">
+      <a href="/dashboard"><i class="layui-icon layui-icon-home"></i></a>
+      <a href="javascript:;"><cite>全部文件</cite></a>
+    </span>
+  </div>
 
+  <div class="functional-area">
+    <div class="file-operation-btns">
+      <button type="button" class="layui-btn">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-wenjianjia"></use>
+        </svg>
+        新建文件夹</button>
+      <button type="button" class="layui-btn"><i class="layui-icon layui-icon-upload-drag"></i> 上传文件</button>
+      <button type="button" class="layui-btn"><i class="layui-icon layui-icon-refresh"></i> 刷新</button>
+    </div>
 
-  <script src="./libs/layui-v2.6.8/layui/layui.js"></script>
+    <div class="file-search-input">
+      <div >
+        搜索文件：
+        <div class="layui-inline">
+          <input class="layui-input" name="keyword" id="search-input" autocomplete="off">
+        </div><button class="layui-btn" data-type="reload" id="file-search-btn">搜索</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="matter-list">
+<!--    <div class="sort-part">-->
+<!--      <div class="sort-part sort-part-name">文件名</div>-->
+<!--      <div class="sort-part sort-part-name">大小</div>-->
+<!--      <div class="sort-part sort-part-date">修改日期</div>-->
+<!--    </div>-->
+
+    <div class="file-list" id="file-list">
+      <div class="file-bar">
+        <div class="left">
+          <span class="icon">
+          <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-wenjianjia1"></use>
+          </svg> 图标</span>
+          <span class="key">文件名</span>
+        </div>
+        <div class="right">
+          <span class="info">
+            <i class="layui-icon layui-icon-template-1"></i>: 文件大小
+            <i class="layui-icon layui-icon-download-circle"></i>
+            <i class="layui-icon layui-icon-delete"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
+<script th:src="@{/js/dashboard.js}" src="../../static/js/dashboard.js"></script>
+<script src="http://at.alicdn.com/t/font_2664360_vzjeh3ia4g.js"></script>
 </body>
 </html>

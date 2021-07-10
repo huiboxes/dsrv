@@ -12,17 +12,28 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ResPage {
 
-    @GetMapping({"/","/index"})
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("/pages/index.html");
-        return mv;
-    }
+//    @GetMapping({"/","/index"})
+//    public ModelAndView index() {
+//
+//        ModelAndView mv = new ModelAndView();
+//        mv.addObject("title","数据尚云-首页");
+//        mv.setViewName("/pages/index.html");
+//        return mv;
+//    }
 
     @GetMapping("/login")
     public ModelAndView login() {
         ModelAndView mv = new ModelAndView();
+        mv.addObject("title","数据尚云-登录");
         mv.setViewName("/pages/login.html");
+        return mv;
+    }
+
+    @GetMapping("/dashboard")
+    public ModelAndView dashboard() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("title","数据尚云-后台");
+        mv.setViewName("/pages/dashboard.html");
         return mv;
     }
 

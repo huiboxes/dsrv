@@ -26,10 +26,10 @@
         <db.jdbcurl>
             <![CDATA[jdbc:mysql://localhost:3655/DSERV_SERVICE?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=utf8]]></db.jdbcurl>
         <main.basedir>${project.basedir}</main.basedir>
+
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -46,8 +46,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>2.5.2</version>
         </dependency>
-
-
     </dependencies>
 
 

@@ -37,7 +37,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         String uri = request.getRequestURI();
-        if (uri.endsWith("js")||uri.endsWith("css")||uri.endsWith("jpg")||uri.endsWith("svg")){
+        if (uri.endsWith("js")||uri.endsWith("css")||uri.endsWith("jpg")||uri.endsWith("png")||uri.endsWith("svg")||uri.endsWith("ttf")||uri.endsWith("woff2")){
             return true ;
         }
 
@@ -56,7 +56,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
         }
         TokenInfo tokenInfo = authService.getTokenInfo(token);
         if (tokenInfo == null) {
-            String url = "/loginPost";
+            String url = "/login";
             response.sendRedirect(url);
             return false;
         }

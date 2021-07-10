@@ -1,3 +1,4 @@
+{
 layui.use(['form','jquery'], function(){
   let form = layui.form
   let layer = layui.layer
@@ -22,10 +23,11 @@ layui.use(['form','jquery'], function(){
 
     if (res.code === 200) {
       localStorage.setItem("username",username)
-      console.log($(window.parent.document).find('.layui-body > iframe').attr('src'))
+      window.location.href = 'dashboard'
     }else{
       layer.msg('登录出错，请重试')
     }
     return false
   })
 })
+}

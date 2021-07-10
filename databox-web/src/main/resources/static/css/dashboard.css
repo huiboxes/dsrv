@@ -1,0 +1,71 @@
+html,body{
+    background-color: #F3F3F4;
+}
+
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.layui-body{
+    padding: 15px;
+    background-color: #fff;
+}
+
+.layui-breadcrumb a:hover {
+    color: #999!important;
+}
+
+.layui-btn {
+    height: 32px;
+    line-height: 32px;
+    background-color: #0096AD;
+}
+
+.topnav{
+    margin-top: 1rem;
+}
+
+.functional-area{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.functional-area .file-operation-btns .icon{
+    width: 1.1em;
+    height: 1.1em;
+}
+
+.functional-area .file-search-input .layui-input{
+    height: 33px;
+}
+
+.matter-list .file-list .file-bar{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+}
+.matter-list .file-list .file-bar:hover{
+    background-color: #F0F8FF;
+    cursor: pointer;
+}
+
+.matter-list .file-list .file-bar .icon{
+    width: 1.6em;
+    height: 1.6em;
+}
+
+.matter-list .file-list .file-bar .left .key{
+    margin-left: .2rem;
+    font-size: 18px;
+}
+
+.matter-list .file-list .file-bar .right .info i{
+    font-size: 22px !important;
+}
+.matter-list .file-list .file-bar .right .info i::before{
+    line-height: 33.6px;
+}

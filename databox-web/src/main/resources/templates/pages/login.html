@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="pages/index" th:fragment="content">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,28 +10,31 @@
   <link th:href="@{/css/login.css}" rel="stylesheet" href="../../static/css/login.css"/>
 </head>
 <body>
-  <div class="login-form">
-    <form class="layui-form" action="" onsubmit="return false">
-      <div class="layui-form-item">
-        <label class="layui-form-label">帐号</label>
-        <div class="layui-input-block">
-          <input type="text" name="username" required  lay-verify="required" placeholder="请输入帐号" autocomplete="off" class="layui-input">
+  <div>
+    <div class="login-form">
+      <form class="layui-form" action="" onsubmit="return false">
+        <div class="layui-form-item">
+          <label class="layui-form-label">帐号</label>
+          <div class="layui-input-block">
+            <input type="text" name="username" required  lay-verify="required" placeholder="请输入帐号" autocomplete="off" class="layui-input">
+          </div>
         </div>
-      </div>
-      <div class="layui-form-item">
-        <label class="layui-form-label">密码</label>
-        <div class="layui-input-block">
-          <input type="password" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        <div class="layui-form-item">
+          <label class="layui-form-label">密码</label>
+          <div class="layui-input-block">
+            <input type="password" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+          </div>
         </div>
-      </div>
-      <div class="layui-form-item">
-        <div class="layui-input-block">
-          <button class="layui-btn" lay-submit lay-filter="login">立即提交</button>
-          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="login">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
+
 <script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
 <script th:src="@{/js/login.js}" src="../../static/js/login.js"></script>
 </body>
