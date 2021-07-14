@@ -19,13 +19,17 @@
 
   <div class="functional-area">
     <div class="file-operation-btns">
-      <button type="button" class="layui-btn">
+      <button type="button" class="layui-btn" id="newFolder">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-wenjianjia"></use>
         </svg>
-        新建文件夹</button>
-      <button type="button" class="layui-btn"><i class="layui-icon layui-icon-upload-drag"></i> 上传文件</button>
-      <button type="button" class="layui-btn"><i class="layui-icon layui-icon-refresh"></i> 刷新</button>
+        新建文件夹
+      </button>
+      <button type="button" class="layui-btn" id="uploadBtn">
+        <i class="layui-icon layui-icon-upload-drag"></i>上传文件
+        <input type="file" name="file" id="upload" style="display: none;" multiple="multiple"/>
+      </button>
+      <button type="button" class="layui-btn" id="refresh"><i class="layui-icon layui-icon-refresh"></i> 刷新</button>
     </div>
 
     <div class="file-search-input">
@@ -65,8 +69,8 @@
     </div>
   </div>
 
-<script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
-<script th:src="@{/js/dashboard.js}" src="../../static/js/dashboard.js"></script>
-<script src="http://at.alicdn.com/t/font_2664360_vzjeh3ia4g.js"></script>
+  <script src="http://at.alicdn.com/t/font_2664360_vzjeh3ia4g.js"></script>
+  <script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
+  <script th:src="@{/js/dashboard.js}" src="../../static/js/dashboard.js"></script>
 </body>
 </html>

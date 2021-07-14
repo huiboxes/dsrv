@@ -24,6 +24,10 @@ html,body{
     background-color: #0096AD;
 }
 
+.layui-btn+.layui-btn {
+    margin-left: 0 !important;
+}
+
 .topnav{
     margin-top: 1rem;
 }

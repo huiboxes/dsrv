@@ -122,7 +122,7 @@ public class DxController extends BaseController {
     public Object putObject(@RequestParam("bucket") String bucket,
                             @RequestParam("key") String key,
                             @RequestParam(value = "mediaType", required = false) String mediaType,
-                            @RequestParam(value = "content", required = false) MultipartFile file,
+                            @RequestParam(value = "content", required = false) MultipartFile content,
                             HttpServletRequest request,
                             HttpServletResponse response) throws Exception {
         UserInfo currentUser = ContextUtil.getCurrentUser();
@@ -153,36 +153,36 @@ public class DxController extends BaseController {
         try {
             // put dir object
             if (key.endsWith("/")) {
-                if (file != null) {
+                if (content != null) {
                     response.setStatus(HttpStatus.SC_BAD_REQUEST);
-                    file.getInputStream().close();
+                    content.getInputStream().close();
                     return null;
                 }
                 dxStoreService.put(bucket, key, null, 0, mediaType, attrs);
                 response.setStatus(HttpStatus.SC_OK);
                 return "success";
             }
-            if (file == null || file.getSize() == 0) {
+            if (content == null || content.getSize() == 0) {
                 response.setStatus(HttpStatus.SC_BAD_REQUEST);
                 response.getWriter().write("object content could not be empty");
                 return "object content could not be empty";
             }
 
-            if (file != null) {
-                if (file.getSize() > MAX_FILE_IN_MEMORY) {
+            if (content != null) {
+                if (content.getSize() > MAX_FILE_IN_MEMORY) {
                     distFile = new File(TMP_DIR + File.separator + UUID.randomUUID().toString());
-                    file.transferTo(distFile);
-                    file.getInputStream().close();
+                    content.transferTo(distFile);
+                    content.getInputStream().close();
                     buffer = new FileInputStream(distFile).getChannel()
-                            .map(FileChannel.MapMode.READ_ONLY, 0, file.getSize());
+                            .map(FileChannel.MapMode.READ_ONLY, 0, content.getSize());
                 } else {
                     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    org.apache.commons.io.IOUtils.copy(file.getInputStream(), outputStream);
+                    org.apache.commons.io.IOUtils.copy(content.getInputStream(), outputStream);
                     buffer = ByteBuffer.wrap(outputStream.toByteArray());
-                    file.getInputStream().close();
+                    content.getInputStream().close();
                 }
             }
-            dxStoreService.put(bucket, key, buffer, file.getSize(), mediaType, attrs);
+            dxStoreService.put(bucket, key, buffer, content.getSize(), mediaType, attrs);
             return "success";
         } catch (IOException ioe) {
             logger.error(ioe);
@@ -193,9 +193,9 @@ public class DxController extends BaseController {
             if (buffer != null) {
                 buffer.clear();
             }
-            if (file != null) {
+            if (content != null) {
                 try {
-                    file.getInputStream().close();
+                    content.getInputStream().close();
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());
                 }
