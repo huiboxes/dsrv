@@ -1,17 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="pages/index" th:fragment="content">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数据尚云-注册</title>
-  <link rel="stylesheet" href="./styles/reset.css">
-  <link rel="stylesheet" href="./libs/layui-v2.6.8/layui/css/layui.css">
+  <title>数据尚云-未登录</title>
+  <link th:href="@{/libs/layui/css/layui.css}" rel="stylesheet" href="../../static/layui/css/layui.css"/>
+  <link th:href="@{/css/reset.css}" rel="stylesheet" href="../../static/css/reset.css"/>
+  <link th:href="@{/css/login.css}" rel="stylesheet" href="../../static/css/login.css"/>
 </head>
 <body>
-  
+<div>
+  <div class="login-form">
+    <form class="layui-form" action="" onsubmit="return false">
+      <div class="layui-form-item">
+        <label class="layui-form-label">帐号</label>
+        <div class="layui-input-block">
+          <input type="text" name="username" id="username" required  lay-verify="required" placeholder="请输入帐号" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+          <input type="password" name="password" id="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item"><label class="layui-form-label"></label><span>没有帐号？<a href="/login">跳转到登录</a></span></div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="register" id="register">立即提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
-
-  <script src="./libs/layui-v2.6.8/layui/layui.js"></script>
+<script th:src="@{/libs/layui/layui.js}" src="../../static/layui/layui.js"></script>
+<script th:src="@{/js/register.js}" src="../../static/js/register.js"></script>
 </body>
 </html>

@@ -28,18 +28,30 @@ public class ManageController extends BaseController {
     IUserService userService;
 
     @RequestMapping(value = "user", method = RequestMethod.POST)
-    public Object createUser(@RequestParam("username") String userName,
+    public Object createUser(@RequestParam("username") String username,
                              @RequestParam("password") String password,
                              @RequestParam(name = "detail", required = false, defaultValue = "") String detail,
                              @RequestParam(name = "role", required = false, defaultValue = "USER") String role) {
         UserInfo currentUser = ContextUtil.getCurrentUser();
         if (operationAccessControl
                 .checkSystemRole(currentUser.getSystemRole(), SystemRole.valueOf(role))) {
-            UserInfo userInfo = new UserInfo(userName, password, SystemRole.valueOf(role), detail);
+            UserInfo userInfo = new UserInfo(username, password, SystemRole.valueOf(role), detail);
             userService.addUser(userInfo);
             return getResult("success");
         }
         return getError(ErrorCodes.ERROR_PERMISSION_DENIED, "NOT ADMIN");
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public Object createUser(@RequestParam("username") String username,
+                             @RequestParam("password") String password) {
+        try {
+            UserInfo userInfo = new UserInfo(username, password, SystemRole.valueOf("USER"), "");
+            userService.addUser(userInfo);
+            return getResult("success");
+        }catch (Exception e){
+            return getError(ErrorCodes.ERROR_PERMISSION_DENIED, e.getMessage());
+        }
     }
 
     @RequestMapping(value = "userdelete",method = RequestMethod.POST)

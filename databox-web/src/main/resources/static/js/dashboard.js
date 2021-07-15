@@ -82,13 +82,14 @@
           var settings = {
             "url": url,
             "method": "POST",
+            error: function(err){
+              layer.msg('当前目录不为空')
+            }
           }
 
           $.ajax(settings).done(function () {
             if( !isFile && window.filepath === '/' ){
               onInitGetFilelist()
-              console.log(3)
-//              window.location.reload()
             }else{
               refreshCurrentPage(bucket,dir)
             }
@@ -141,6 +142,32 @@
           layer.close(index)
         })
       })
+
+      // search
+      $('#file-search-btn').on('click',function(){
+        if(window.filepath === '/'){
+          layer.msg('文件被整理到不需要用搜索功能了')
+        }
+        let keywords = $('#search-input').val()
+        if (keywords.length === 0){
+          layer.msg('搜索关键词不能为空')
+        }
+
+        let bucket = window.filepath.split('/')[1]
+        let dir = window.filepath.replace(`/${bucket}`,'')
+
+        var settings = {
+          url: `/dx/object/list/prefix?bucket=${bucket}&dir=/&prefix=${keywords}`,
+          method: "GET",
+        };
+
+        $.ajax(settings).done(function (res) {
+          res.objectList.length === 0
+                    ? $('#file-list').html(`<h2 style="user-select:none;">没能根据“${keywords}”搜索到结果</h2>`)
+                    : $('#file-list').html(filebarGenerator(res.objectList))
+        })
+      })
+
     })
 
     /***********  tool function  ************************************************/

@@ -44,7 +44,9 @@ public class SecurityInterceptor implements HandlerInterceptor {
         if (request.getRequestURI().equals("/loginPost")
             || request.getRequestURI().equals("/")
             || request.getRequestURI().equals("/index")
-            || request.getRequestURI().equals("/login")) {
+            || request.getRequestURI().equals("/login")
+            || request.getRequestURI().equals("/register")
+            || request.getRequestURI().equals("/dx/sys/register")) {
             return true;
         }
         String token = "";

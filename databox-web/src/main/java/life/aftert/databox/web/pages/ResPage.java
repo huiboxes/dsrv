@@ -37,4 +37,12 @@ public class ResPage {
         return mv;
     }
 
+    @GetMapping("/register")
+    public ModelAndView register() {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("title","数据尚云-注册");
+        mv.setViewName("/pages/register.html");
+        return mv;
+    }
+
 }
